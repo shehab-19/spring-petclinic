@@ -1,6 +1,14 @@
 pipeline {
     agent any
 
+        parameters {
+        choice(
+            name: 'MAVEN_COMMAND',
+            choices: ['install', 'package', 'clean', 'test'],
+            description: 'Select the Maven command to execute'
+        )
+    }
+
     stages {
         // stage('Source') {
         //     steps {
@@ -9,16 +17,10 @@ pipeline {
         //     }
         // }
 
-        stage('Testing') {
+        stage('mvn command') {
             steps {
-                sh 'mvn'
+                sh "mvn ${params.MAVEN_COMMAND}"
             }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Test'
-            }
-        }
+        }        
     }
 }
