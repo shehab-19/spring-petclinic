@@ -35,7 +35,7 @@ pipeline {
                     transfers: [
                         sshTransfer(
                             sourceFiles: 'shehab.py',       // File to copy
-                            remoteDirectory: '/home/user0' // Destination directory on the remote server
+                            remoteDirectory: '/home/user2' // Destination directory on the remote server
                         )
                     ]
                 )
