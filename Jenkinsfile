@@ -36,6 +36,7 @@ pipeline {
                             sourceFiles: 'shehab.py',      // File to copy
                             remoteDirectory: '/home/user0' // Destination directory on the remote server
                         )
+                )
             }
         }    
 
