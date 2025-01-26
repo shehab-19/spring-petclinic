@@ -1,10 +1,11 @@
 pipeline {
     agent any
-    //     tools {
-    //    maven 'maven'
+
+    // tools {
+    //     maven 'maven' // Uncomment if you need Maven installed
     // }
 
-    //     parameters {
+    // parameters {
     //     choice(
     //         name: 'MAVEN_COMMAND',
     //         choices: ['install', 'package', 'clean', 'test'],
@@ -20,27 +21,25 @@ pipeline {
         //     }
         // }
 
-        // stage('mvn command') {
+        // stage('Maven Command') {
         //     steps {
         //         sh "mvn ${params.MAVEN_COMMAND}"
         //     }
         // }        
 
-        stage('deployment') {
+        stage('Deployment') {
             steps {
                 publishOverSsh(
                     server: 'Server2', // The name of your configured server in "Publish Over SSH"
-                    verbose: true,           // Optional: Enable detailed logs
+                    verbose: true,     // Optional: Enable detailed logs
                     transfers: [
                         sshTransfer(
-                            sourceFiles: 'shehab.py',      // File to copy
+                            sourceFiles: 'shehab.py',       // File to copy
                             remoteDirectory: '/home/user0' // Destination directory on the remote server
                         )
+                    ]
                 )
             }
-        }    
-
-
-
+        }
     }
 }
