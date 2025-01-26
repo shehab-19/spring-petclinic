@@ -20,10 +20,26 @@ pipeline {
         //     }
         // }
 
-        stage('mvn command') {
+        // stage('mvn command') {
+        //     steps {
+        //         sh "mvn ${params.MAVEN_COMMAND}"
+        //     }
+        // }        
+
+        stage('deployment') {
             steps {
-                sh "mvn ${params.MAVEN_COMMAND}"
+                publishOverSsh(
+                    server: 'Server2', // The name of your configured server in "Publish Over SSH"
+                    verbose: true,           // Optional: Enable detailed logs
+                    transfers: [
+                        sshTransfer(
+                            sourceFiles: 'shehab.py',      // File to copy
+                            remoteDirectory: '/home/user0' // Destination directory on the remote server
+                        )
             }
-        }        
+        }    
+
+
+
     }
 }
