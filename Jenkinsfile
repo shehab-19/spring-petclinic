@@ -29,16 +29,18 @@ pipeline {
 
         stage('Deployment') {
             steps {
-                publishOverSsh(
-                    server: 'Server2', // The name of your configured server in "Publish Over SSH"
-                    verbose: true,     // Optional: Enable detailed logs
-                    transfers: [
-                        sshTransfer(
-                            sourceFiles: 'shehab.py',       // File to copy
-                            remoteDirectory: '/home/user2' // Destination directory on the remote server
+                    script{
+                        publishOverSsh(
+                            server: 'Server2', // The name of your configured server in "Publish Over SSH"
+                            verbose: true,     // Optional: Enable detailed logs
+                            transfers: [
+                                sshTransfer(
+                                    sourceFiles: 'shehab.py',       // File to copy
+                                    remoteDirectory: '/home/user2' // Destination directory on the remote server
+                                )
+                            ]
                         )
-                    ]
-                )
+            }
             }
         }
     }
