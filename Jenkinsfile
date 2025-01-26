@@ -1,16 +1,16 @@
 pipeline {
     agent any
-        tools {
-       maven 'maven'
-    }
+    //     tools {
+    //    maven 'maven'
+    // }
 
-        parameters {
-        choice(
-            name: 'MAVEN_COMMAND',
-            choices: ['install', 'package', 'clean', 'test'],
-            description: 'Select the Maven command to execute'
-        )
-    }
+    //     parameters {
+    //     choice(
+    //         name: 'MAVEN_COMMAND',
+    //         choices: ['install', 'package', 'clean', 'test'],
+    //         description: 'Select the Maven command to execute'
+    //     )
+    // }
 
     stages {
         // stage('Source') {
