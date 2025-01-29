@@ -17,54 +17,32 @@ pipeline {
     stages {
               
         stage('Deployment') {
-
+            
           steps {
                 sshPublisher(publishers: [
                     sshPublisherDesc(
-                        configName: 'server2',
+                        configName: 'depi_jenkins_server', 
                         transfers: [
                             sshTransfer(
-                                sourceFiles: './shehab.py',
-                                remoteDirectory: '/home/user2',
-                                // removePrefix: '',
-                                execCommand: '''
-                                    ls -l /home/user2;
-                                    chmod 644 /home/user2/shehab.py;
-                                    python3 /home/user2/shehab.py;
-                                ''',
-                                execTimeout: 120000
+                                sourceFiles: 'hello.py'
+                                cleanRemote: false, 
+                                excludes: '',  
+                                execTimeout: 120000, 
+                                flatten: false, 
+                                makeEmptyDirs: false, 
+                                noDefaultExcludes: false, 
+                                patternSeparator: '[, ]+', 
+                                remoteDirectory: '/home/user2', 
+                                remoteDirectorySDF: false, 
+                                removePrefix: '',
+                                execCommand: 'ls -l',
                             )
                         ],
                         usePromotionTimestamp: false,
                         verbose: true
                     )
                 ])
-            }
-
-
-
-
-            
-            // steps {
-            //     sshPublisher(publishers: [
-            //         sshPublisherDesc(
-            //             configName: 'server2', // The SSH server configured in Jenkins
-            //             transfers: [
-            //                 sshTransfer(
-            //                     execCommand: 'rm /home/user2/shehab.py',
-            //                     sourceFiles: 'shehab.py', // Path to the file you want to copy
-            //                     remoteDirectory: '/home/user2', // Remote destination directory
-            //                     removePrefix: '', // Optional: remove prefix before uploading
-            //                     execCommand: '', // Optional: any command to execute after transfer
-            //                     execCommand: 'python3 /home/user2/shehab.py',
-            //                     execTimeout: 120000
-            //                 )
-            //             ],
-            //             usePromotionTimestamp: false,
-            //             verbose: true
-            //         )
-            //     ])
-            // }
+            }          
         }
     }
 }
