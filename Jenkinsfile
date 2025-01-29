@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+
     // tools {
     //     maven 'maven' // Uncomment if you need Maven installed
     // }
@@ -30,18 +31,22 @@ pipeline {
         stage('Deployment') {
 
             steps {
-                script {
-                    // Example: Copy a file to the remote server
-                    publishOverSSH(
-                        server: 'server2', // Name of your configured SSH server
+                sshPublisher(publishers: [
+                    sshPublisherDesc(
+                        configName: 'server2', // The SSH server configured in Jenkins
                         transfers: [
-                            [
-                                source: 'shehab.py',  // Path to the file you want to copy
-                                remote: '/home/user2'  // Remote destination directory
-                            ]
-                        ]
+                            sshTransfer(
+                                sourceFiles: 'shehab.py', // Path to the file you want to copy
+                                remoteDirectory: '/home/user2', // Remote destination directory
+                                removePrefix: '', // Optional: remove prefix before uploading
+                                execCommand: '', // Optional: any command to execute after transfer
+                                execTimeout: 120000
+                            )
+                        ],
+                        usePromotionTimestamp: false,
+                        verbose: true
                     )
-                }
+                ])
             }
 
 
