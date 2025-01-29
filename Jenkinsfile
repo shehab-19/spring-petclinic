@@ -28,7 +28,7 @@ pipeline {
                                 remoteDirectory: '/home/user2', // Remote destination directory
                                 removePrefix: '', // Optional: remove prefix before uploading
                                 execCommand: '''
-                                        python3 /home/user2/shehab.py; 
+                                        ls -l ; 
                                 ''', 
                                 execTimeout: 120000
                             )
