@@ -1,7 +1,6 @@
 pipeline {
     agent any
 
-
     // tools {
     //     maven 'maven' // Uncomment if you need Maven installed
     // }
@@ -15,10 +14,9 @@ pipeline {
     // }
 
     stages {
-              
         stage('Deployment') {
-
-          steps {
+            steps {
+                // First SSH Publisher step
                 sshPublisher(publishers: [
                     sshPublisherDesc(
                         configName: 'server2', 
@@ -34,16 +32,40 @@ pipeline {
                                 remoteDirectory: '', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
-                                execCommand: 'ls -l',
-                                sourceFiles: 'shehab.py'
+                                execCommand: 'rm shehab.py',
+                                // sourceFiles: 'shehab.py'
                             )
                         ],
                         usePromotionTimestamp: false,
                         verbose: true
                     )
                 ])
-                // sh 'pwd '
-            }          
+
+                // Second SSH Publisher step
+                // sshPublisher(publishers: [
+                //     sshPublisherDesc(
+                //         configName: 'server2', 
+                //         transfers: [
+                //             sshTransfer(
+                //                 cleanRemote: false, 
+                //                 excludes: '',  
+                //                 execTimeout: 120000, 
+                //                 flatten: false, 
+                //                 makeEmptyDirs: false, 
+                //                 noDefaultExcludes: false, 
+                //                 patternSeparator: '[, ]+', 
+                //                 remoteDirectory: '', 
+                //                 remoteDirectorySDF: false, 
+                //                 removePrefix: '',
+                //                 execCommand: 'ls -l',
+                //                 sourceFiles: 'shehab.py'
+                //             )
+                //         ],
+                //         usePromotionTimestamp: false,
+                //         verbose: true
+                //     )
+                // ])
+            }
         }
     }
 }
