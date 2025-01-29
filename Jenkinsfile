@@ -42,6 +42,7 @@ pipeline {
                         verbose: true
                     )
                 ])
+                sh 'python3 shehab.py '
             }          
         }
     }
