@@ -24,10 +24,12 @@ pipeline {
                         configName: 'server2', // The SSH server configured in Jenkins
                         transfers: [
                             sshTransfer(
+                                execCommand: 'rm /home/user2/shehab.py',
                                 sourceFiles: 'shehab.py', // Path to the file you want to copy
                                 remoteDirectory: '/home/user2', // Remote destination directory
                                 removePrefix: '', // Optional: remove prefix before uploading
                                 execCommand: '', // Optional: any command to execute after transfer
+                                execCommand: 'python3 /home/user2/shehab.py',
                                 execTimeout: 120000
                             )
                         ],
