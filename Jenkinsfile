@@ -29,11 +29,11 @@ pipeline {
                                 makeEmptyDirs: false, 
                                 noDefaultExcludes: false, 
                                 patternSeparator: '[, ]+', 
-                                remoteDirectory: '/home/user2', 
+                                remoteDirectory: '', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
-                                execCommand: 'ls -l /home/user2',
-                                // sourceFiles: 'shehab.py'
+                                execCommand: 'python3 shehab.py',
+                                sourceFiles: 'shehab.py'
                             )
                         ],
                         usePromotionTimestamp: false,
