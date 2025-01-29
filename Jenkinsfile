@@ -29,7 +29,7 @@ pipeline {
                                 makeEmptyDirs: false, 
                                 noDefaultExcludes: false, 
                                 patternSeparator: '[, ]+', 
-                                remoteDirectory: '', 
+                                remoteDirectory: 'home/', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
                                 execCommand: 'ls -l',
