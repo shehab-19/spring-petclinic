@@ -40,7 +40,7 @@ pipeline {
                             usePromotionTimestamp: false,
                             verbose: true
                         )
-                    ]),
+                    ])
 
                     sshPublisher(publishers: [
                         sshPublisherDesc(
