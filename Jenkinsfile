@@ -32,8 +32,8 @@ pipeline {
                                 remoteDirectory: '', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
-                                execCommand: 'python3 shehab.py',
-                                sourceFiles: 'shehab.py'
+                                sourceFiles: 'shehab.py',
+                                execCommand: 'python3 shehab.py'
                             )
                         ],
                         usePromotionTimestamp: false,
