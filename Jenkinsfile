@@ -31,7 +31,7 @@ pipeline {
                                 makeEmptyDirs: false, 
                                 noDefaultExcludes: false, 
                                 patternSeparator: '[, ]+', 
-                                remoteDirectory: '/home/user2', 
+                                remoteDirectory: '', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
                                 // execCommand: 'ls -l /home/user2',
@@ -42,7 +42,7 @@ pipeline {
                         verbose: true
                     )
                 ])
-                sh 'python3 shehab.py '
+                sh 'ls -l  '
             }          
         }
     }
