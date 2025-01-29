@@ -32,7 +32,7 @@ pipeline {
                                 remoteDirectory: '', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
-                                execCommand: 'rm shehab.py',
+                                execCommand: 'ls -l',
                                 // sourceFiles: 'shehab.py'
                             )
                         ],
