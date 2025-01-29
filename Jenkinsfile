@@ -34,7 +34,7 @@ pipeline {
                                 remoteDirectory: '', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
-                                // execCommand: 'ls -l /home/user2',
+                                execCommand: 'ls -l',
                                 sourceFiles: 'shehab.py'
                             )
                         ],
@@ -42,7 +42,7 @@ pipeline {
                         verbose: true
                     )
                 ])
-                sh 'ls -l  '
+                // sh 'pwd '
             }          
         }
     }
