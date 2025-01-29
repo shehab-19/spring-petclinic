@@ -15,19 +15,7 @@ pipeline {
     // }
 
     stages {
-        // stage('Source') {
-        //     steps {
-        //         echo 'Cloning repository...'
-        //         git url: 'https://github.com/spring-projects/spring-petclinic.git', branch: 'main'
-        //     }
-        // }
-
-        // stage('Maven Command') {
-        //     steps {
-        //         sh "mvn ${params.MAVEN_COMMAND}"
-        //     }
-        // }        
-
+              
         stage('Deployment') {
 
             steps {
@@ -48,22 +36,6 @@ pipeline {
                     )
                 ])
             }
-
-
-            // steps {
-            //         script{
-            //             publishOverSsh(
-            //                 server: 'Server2', // The name of your configured server in "Publish Over SSH"
-            //                 verbose: true,     // Optional: Enable detailed logs
-            //                 transfers: [
-            //                     sshTransfer(
-            //                         sourceFiles: 'shehab.py',       // File to copy
-            //                         remoteDirectory: '/home/user2' // Destination directory on the remote server
-            //                     )
-            //                 ]
-            //             )
-            // }
-            // }
         }
     }
 }
