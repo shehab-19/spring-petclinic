@@ -24,7 +24,6 @@ pipeline {
                         configName: 'server2', 
                         transfers: [
                             sshTransfer(
-                                sourceFiles: 'shehab.py',
                                 cleanRemote: false, 
                                 excludes: '',  
                                 execTimeout: 120000, 
@@ -35,7 +34,8 @@ pipeline {
                                 remoteDirectory: '/home/user2', 
                                 remoteDirectorySDF: false, 
                                 removePrefix: '',
-                                execCommand: 'ls -l /home/user2',
+                                // execCommand: 'ls -l /home/user2',
+                                sourceFiles: 'shehab.py'
                             )
                         ],
                         usePromotionTimestamp: false,
