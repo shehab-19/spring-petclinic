@@ -19,17 +19,21 @@ pipeline {
         stage('Deployment') {
 
             steps {
-                sshPublisher(publishers: [
-                    sshPublisherDesc(
-                        configName: 'server2', // The SSH server configured in Jenkins
-                        transfers: [
+                  sshPublisher(publishers: [
+                     sshPublisherDesc(
+                         configName: 'server2', // The SSH server configured in Jenkins
+                         transfers: [
                             sshTransfer(
-                                execCommand: 'rm /home/user2/shehab.py',
-                                sourceFiles: 'shehab.py', // Path to the file you want to copy
+                                execCommand: 'rm  /home/user2/shehab.py', // Remove the old file first
                                 remoteDirectory: '/home/user2', // Remote destination directory
                                 removePrefix: '', // Optional: remove prefix before uploading
-                                execCommand: '', // Optional: any command to execute after transfer
-                                execCommand: 'python3 /home/user2/shehab.py',
+                                execTimeout: 120000
+                            ),
+                            sshTransfer(
+                                sourceFiles: 'shehab.py', // Path to the new file
+                                remoteDirectory: '/home/user2', // Remote destination directory
+                                removePrefix: '', // Optional: remove prefix before uploading
+                                execCommand: 'python3 /home/user2/shehab.py', // Execute the new file
                                 execTimeout: 120000
                             )
                         ],
@@ -38,6 +42,28 @@ pipeline {
                     )
                 ])
             }
+
+            
+            // steps {
+            //     sshPublisher(publishers: [
+            //         sshPublisherDesc(
+            //             configName: 'server2', // The SSH server configured in Jenkins
+            //             transfers: [
+            //                 sshTransfer(
+            //                     execCommand: 'rm /home/user2/shehab.py',
+            //                     sourceFiles: 'shehab.py', // Path to the file you want to copy
+            //                     remoteDirectory: '/home/user2', // Remote destination directory
+            //                     removePrefix: '', // Optional: remove prefix before uploading
+            //                     execCommand: '', // Optional: any command to execute after transfer
+            //                     execCommand: 'python3 /home/user2/shehab.py',
+            //                     execTimeout: 120000
+            //                 )
+            //             ],
+            //             usePromotionTimestamp: false,
+            //             verbose: true
+            //         )
+            //     ])
+            // }
         }
     }
 }
