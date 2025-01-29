@@ -57,7 +57,7 @@ pipeline {
                                     remoteDirectory: '', 
                                     remoteDirectorySDF: false, 
                                     removePrefix: '',
-                                    execCommand: 'python3 shehab.py',
+                                    execCommand: 'ls -l && python3 shehab.py',
                                     sourceFiles: 'shehab.py'
                                 )
                             ],
