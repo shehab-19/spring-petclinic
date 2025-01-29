@@ -16,54 +16,56 @@ pipeline {
     stages {
         stage('Deployment') {
             steps {
-                // First SSH Publisher step
-                sshPublisher(publishers: [
-                    sshPublisherDesc(
-                        configName: 'server2', 
-                        transfers: [
-                            sshTransfer(
-                                cleanRemote: false, 
-                                excludes: '',  
-                                execTimeout: 120000, 
-                                flatten: false, 
-                                makeEmptyDirs: false, 
-                                noDefaultExcludes: false, 
-                                patternSeparator: '[, ]+', 
-                                remoteDirectory: '', 
-                                remoteDirectorySDF: false, 
-                                removePrefix: '',
-                                // sourceFiles: 'shehab.py',
-                                execCommand: 'rm shehab.py'
-                            )
-                        ],
-                        usePromotionTimestamp: false,
-                        verbose: true
-                    )
-                ]),
+                script{
+                    // First SSH Publisher step
+                    sshPublisher(publishers: [
+                        sshPublisherDesc(
+                            configName: 'server2', 
+                            transfers: [
+                                sshTransfer(
+                                    cleanRemote: false, 
+                                    excludes: '',  
+                                    execTimeout: 120000, 
+                                    flatten: false, 
+                                    makeEmptyDirs: false, 
+                                    noDefaultExcludes: false, 
+                                    patternSeparator: '[, ]+', 
+                                    remoteDirectory: '', 
+                                    remoteDirectorySDF: false, 
+                                    removePrefix: '',
+                                    // sourceFiles: 'shehab.py',
+                                    execCommand: 'rm shehab.py'
+                                )
+                            ],
+                            usePromotionTimestamp: false,
+                            verbose: true
+                        )
+                    ]),
 
-                sshPublisher(publishers: [
-                    sshPublisherDesc(
-                        configName: 'server2', 
-                        transfers: [
-                            sshTransfer(
-                                cleanRemote: false, 
-                                excludes: '',  
-                                execTimeout: 120000, 
-                                flatten: false, 
-                                makeEmptyDirs: false, 
-                                noDefaultExcludes: false, 
-                                patternSeparator: '[, ]+', 
-                                remoteDirectory: '', 
-                                remoteDirectorySDF: false, 
-                                removePrefix: '',
-                                execCommand: 'python3 shehab.py',
-                                sourceFiles: 'shehab.py'
-                            )
-                        ],
-                        usePromotionTimestamp: false,
-                        verbose: true
-                    )
-                ])
+                    sshPublisher(publishers: [
+                        sshPublisherDesc(
+                            configName: 'server2', 
+                            transfers: [
+                                sshTransfer(
+                                    cleanRemote: false, 
+                                    excludes: '',  
+                                    execTimeout: 120000, 
+                                    flatten: false, 
+                                    makeEmptyDirs: false, 
+                                    noDefaultExcludes: false, 
+                                    patternSeparator: '[, ]+', 
+                                    remoteDirectory: '', 
+                                    remoteDirectorySDF: false, 
+                                    removePrefix: '',
+                                    execCommand: 'python3 shehab.py',
+                                    sourceFiles: 'shehab.py'
+                                )
+                            ],
+                            usePromotionTimestamp: false,
+                            verbose: true
+                        )
+                    ])
+                }    
             }
         }
     }
