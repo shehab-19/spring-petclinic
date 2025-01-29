@@ -21,7 +21,7 @@ pipeline {
           steps {
                 sshPublisher(publishers: [
                     sshPublisherDesc(
-                        configName: 'depi_jenkins_server', 
+                        configName: 'server2', 
                         transfers: [
                             sshTransfer(
                                 sourceFiles: 'hello.py',
