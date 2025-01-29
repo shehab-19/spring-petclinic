@@ -24,11 +24,12 @@ pipeline {
                         configName: 'server2',
                         transfers: [
                             sshTransfer(
-                                sourceFiles: 'shehab.py',
+                                sourceFiles: './shehab.py',
                                 remoteDirectory: '/home/user2',
-                                removePrefix: '',
+                                // removePrefix: '',
                                 execCommand: '''
                                     ls -l /home/user2;
+                                    chmod 644 /home/user2/shehab.py;
                                     python3 /home/user2/shehab.py;
                                 ''',
                                 execTimeout: 120000
