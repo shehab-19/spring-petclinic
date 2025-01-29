@@ -18,16 +18,19 @@ pipeline {
               
         stage('Deployment') {
 
-           steps {
+          steps {
                 sshPublisher(publishers: [
                     sshPublisherDesc(
-                        configName: 'server2', // The SSH server configured in Jenkins
+                        configName: 'server2',
                         transfers: [
                             sshTransfer(
-                                sourceFiles: 'shehab.py', // Path to the new file
-                                remoteDirectory: '/home/user2', // Remote destination directory
-                                removePrefix: '', // Optional: remove prefix before uploading
-                                execCommand: 'python3 /home/user2/shehab.py', // Correct command to run the script
+                                sourceFiles: 'shehab.py',
+                                remoteDirectory: '/home/user2',
+                                removePrefix: '',
+                                execCommand: '''
+                                    ls -l /home/user2;
+                                    python3 /home/user2/shehab.py;
+                                ''',
                                 execTimeout: 120000
                             )
                         ],
@@ -36,6 +39,7 @@ pipeline {
                     )
                 ])
             }
+
 
 
 
