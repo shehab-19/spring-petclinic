@@ -28,20 +28,37 @@ pipeline {
         // }        
 
         stage('Deployment') {
+
             steps {
-                    script{
-                        publishOverSsh(
-                            server: 'Server2', // The name of your configured server in "Publish Over SSH"
-                            verbose: true,     // Optional: Enable detailed logs
-                            transfers: [
-                                sshTransfer(
-                                    sourceFiles: 'shehab.py',       // File to copy
-                                    remoteDirectory: '/home/user2' // Destination directory on the remote server
-                                )
+                script {
+                    // Example: Copy a file to the remote server
+                    publishOverSSH(
+                        server: 'server2', // Name of your configured SSH server
+                        transfers: [
+                            [
+                                source: 'shehab.py',  // Path to the file you want to copy
+                                remote: '/home/user2'  // Remote destination directory
                             ]
-                        )
+                        ]
+                    )
+                }
             }
-            }
+
+
+            // steps {
+            //         script{
+            //             publishOverSsh(
+            //                 server: 'Server2', // The name of your configured server in "Publish Over SSH"
+            //                 verbose: true,     // Optional: Enable detailed logs
+            //                 transfers: [
+            //                     sshTransfer(
+            //                         sourceFiles: 'shehab.py',       // File to copy
+            //                         remoteDirectory: '/home/user2' // Destination directory on the remote server
+            //                     )
+            //                 ]
+            //             )
+            // }
+            // }
         }
     }
 }
