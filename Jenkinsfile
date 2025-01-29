@@ -27,9 +27,7 @@ pipeline {
                                 sourceFiles: 'shehab.py', // Path to the new file
                                 remoteDirectory: '/home/user2', // Remote destination directory
                                 removePrefix: '', // Optional: remove prefix before uploading
-                                execCommand: '''
-                                        ls -l ; 
-                                ''', 
+                                execCommand: 'python3 /home/user2/shehab.py', // Correct command to run the script
                                 execTimeout: 120000
                             )
                         ],
@@ -38,6 +36,7 @@ pipeline {
                     )
                 ])
             }
+
 
 
             
