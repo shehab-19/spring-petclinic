@@ -39,7 +39,7 @@ pipeline {
                         usePromotionTimestamp: false,
                         verbose: true
                     )
-                ]),
+                ])
 
                 Second SSH Publisher step
                 sshPublisher(publishers: [
