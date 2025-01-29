@@ -17,14 +17,14 @@ pipeline {
     stages {
               
         stage('Deployment') {
-            
+
           steps {
                 sshPublisher(publishers: [
                     sshPublisherDesc(
                         configName: 'depi_jenkins_server', 
                         transfers: [
                             sshTransfer(
-                                sourceFiles: 'hello.py'
+                                sourceFiles: 'hello.py',
                                 cleanRemote: false, 
                                 excludes: '',  
                                 execTimeout: 120000, 
